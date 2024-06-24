@@ -1,0 +1,32 @@
+#header{
+    background-color: deepskyblue;
+    color: yellow;
+    font-family: "Apple Chancery";
+    height: 100px;
+    width: 100%;
+    position:fixed;
+    text-align: center;
+}
+
+#sidebar{
+    height: 700px;
+    width: 20%;
+    position:fixed;
+    top:100px;
+}
+#main{
+    background-color: aliceblue;
+    height: 700px;
+    width: 80%;
+    left:20%;
+    top:100px;
+    position:relative;
+    overflow: scroll;
+}
+.tuht_show {
+    font-family: "Telugu Sangam MN";
+    color: firebrick;
+}
+#main p {
+    font-family: "Time New Roman";
+}
