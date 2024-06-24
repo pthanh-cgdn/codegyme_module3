@@ -33,4 +33,5 @@ select
 from mark m
 join student s
 on m.studentid = s.studentid
-group by s.studentid;
+group by s.studentid
+order by average_mark desc;
