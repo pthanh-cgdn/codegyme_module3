@@ -1,0 +1,106 @@
+*{
+    box-sizing: border-box;
+}
+#header{
+    background-color: khaki;
+    height:60px;
+    width:100%
+}
+#header h1{
+    color: brown;
+    font-family: "Apple Chancery";
+}
+#menu{
+    margin-top:2px;
+    height:40px;
+    width:100%;
+    background-color: khaki;
+}
+#menu ul{
+    margin:0;
+    padding-left:25%;
+}
+#menu li{
+    display:block;
+    float:left;
+    width:16.66%;
+    height:40px;
+    padding-top:10px;
+    vertical-align:middle;
+    text-align: center;
+    color: firebrick;
+    font-family: "Apple Chancery";
+}
+#menu li:hover{
+    background-color: white;
+}
+#sidebar{
+    background-color: ivory;
+    width:33.33%;
+    height:650px;
+    padding:0;
+    margin:0;
+    float:left;
+}
+#sidebar iframe{
+    padding-left:5%;
+    width: 90%;
+    height: 30%;
+}
+#sidebar p{
+    padding-left:5%;
+    margin:0;
+}
+#main{
+    width:66.67%;
+    height:650px;
+    float:left;
+    background-color: azure;
+}
+#main iframe{
+    padding-left:5%;
+    width: 90%;
+    height: 60%;
+}
+#main p, #main h4{
+    padding-left:5%;
+}
+#main p{
+    opacity:60%;
+}
+#footer{
+    clear:both;
+    height:40px;
+    width:100%;
+    background-color: khaki;
+    text-align: center;
+    padding-top:10px;
+    font-style: italic;
+    opacity: 50%;
+}
+@media (max-width: 1100px) {
+    #sidebar {
+        display: none;
+    }
+    #main{
+        width:100%;
+        height:650px;
+        float:left;
+        background-color: azure;
+    }
+    #menu ul{
+        margin:0;
+        padding:0;
+    }
+    #menu li{
+        display:block;
+        float:left;
+        width:25%;
+        height:40px;
+        padding-top:10px;
+        vertical-align:middle;
+        text-align: center;
+        color: firebrick;
+        font-family: "Apple Chancery";
+    }
+}

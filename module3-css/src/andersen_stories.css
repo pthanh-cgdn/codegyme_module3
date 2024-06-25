@@ -7,12 +7,13 @@
     position:fixed;
     text-align: center;
 }
-
 #sidebar{
     height: 700px;
     width: 20%;
     position:fixed;
-    top:100px;
+    top:108px;
+    display:inline-block;
+    background-color: ivory;
 }
 #main{
     background-color: aliceblue;
@@ -22,6 +23,7 @@
     top:100px;
     position:relative;
     overflow: scroll;
+    display:inline-block;
 }
 .tuht_show {
     font-family: "Telugu Sangam MN";
@@ -29,4 +31,6 @@
 }
 #main p {
     font-family: "Time New Roman";
+    text-align: justify;
+    text-indent:30px;
 }
