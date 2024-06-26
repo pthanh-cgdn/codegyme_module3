@@ -41,6 +41,7 @@
     padding:0;
     margin:0;
     float:left;
+    overflow:scroll;
 }
 #sidebar iframe{
     padding-left:5%;
@@ -50,6 +51,7 @@
 #sidebar p{
     padding-left:5%;
     margin:0;
+    opacity:60%;
 }
 #main{
     width:66.67%;
@@ -58,12 +60,12 @@
     background-color: azure;
 }
 #main iframe{
-    padding-left:5%;
+    padding-left:10%;
     width: 90%;
     height: 60%;
 }
 #main p, #main h4{
-    padding-left:5%;
+    padding-left:10%;
 }
 #main p{
     opacity:60%;
@@ -85,7 +87,7 @@
     #main{
         width:100%;
         height:650px;
-        float:left;
+        float:right;
         background-color: azure;
     }
     #menu ul{
