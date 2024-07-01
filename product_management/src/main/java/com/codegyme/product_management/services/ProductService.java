@@ -26,4 +26,8 @@ public class ProductService {
     public List<Product> getAll() {
         return productRepository.getAll();
     }
+
+    public List<Product> search(String searchContent) {
+        return productRepository.search(searchContent);
+    }
 }

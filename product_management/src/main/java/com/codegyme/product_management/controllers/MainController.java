@@ -92,6 +92,11 @@ public class MainController extends HttpServlet {
                 }
                 req.getRequestDispatcher("product/edit.jsp").forward(req, resp);
                 break;
+            case "search":
+                String searchContent = req.getParameter("search");
+                products = productService.search(searchContent);
+                req.setAttribute("products", products);
+                req.getRequestDispatcher("product/search.jsp").forward(req, resp);
         }
     }
 }

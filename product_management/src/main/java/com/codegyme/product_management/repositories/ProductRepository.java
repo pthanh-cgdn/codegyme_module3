@@ -9,7 +9,7 @@ public class ProductRepository {
     List<Product> products = new ArrayList<>();
     public boolean add(Product product) {
         if (!products.isEmpty()){
-            product.setId(products.get(products.size() - 1).getId());
+            product.setId(products.get(products.size() - 1).getId()+1);
         } else {
             product.setId(1);
         }
@@ -45,5 +45,15 @@ public class ProductRepository {
 
     public List<Product> getAll() {
         return this.products;
+    }
+
+    public List<Product> search(String searchContent) {
+        List<Product> searchedProduct = new ArrayList<>();
+        for (Product product : products) {
+            if (product.getName().toLowerCase().contains(searchContent.toLowerCase())) {
+                searchedProduct.add(product);
+            }
+        }
+        return searchedProduct;
     }
 }
