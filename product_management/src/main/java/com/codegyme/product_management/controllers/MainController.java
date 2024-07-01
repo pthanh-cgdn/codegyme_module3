@@ -28,7 +28,8 @@ public class MainController extends HttpServlet {
                 break;
             case "edit":
                 int id = Integer.parseInt(req.getParameter("id"));
-                req.setAttribute("id", id);
+                Product productToEdit = productService.findProductById(id);
+                req.setAttribute("product", productToEdit);
                 req.getRequestDispatcher("product/edit.jsp").forward(req, resp);
                 break;
             default:

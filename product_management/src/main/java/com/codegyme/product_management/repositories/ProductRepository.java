@@ -6,7 +6,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository {
-    List<Product> products = new ArrayList<>();
+    private static List<Product> products = new ArrayList<>();
+    static {
+        products.add(new Product(1,"Iphone 16 Pro","Mobile","Apple",999));
+        products.add(new Product(2,"Samsung Galaxy S10","Mobile","Samsung",899));
+        products.add(new Product(3,"Bphone B2","Mobile","BKAV",599));
+    }
     public boolean add(Product product) {
         if (!products.isEmpty()){
             product.setId(products.get(products.size() - 1).getId()+1);

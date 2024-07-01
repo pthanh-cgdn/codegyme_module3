@@ -17,7 +17,7 @@
     </style>
 </head>
 <body>
-<h1>Create new product</h1>
+<h1>Edit product</h1>
 <p>
     <c:if test='${requestScope["message"] != null}'>
         <span class="message">${requestScope["message"]}</span>
@@ -33,25 +33,25 @@
             <tr>
                 <td>Name: </td>
                 <td>
-                    <input type="text" name="name" id="name">
-                    <input type="hidden" name="id" value="${id}">
+                    <input type="text" name="name" id="name" value="${product.name}">
+                    <input type="hidden" name="id" value="${product.id}">
                 </td>
             </tr>
             <tr>
                 <td>Category: </td>
-                <td><input type="text" name="categoryName" id="categoryName"></td>
+                <td><input type="text" name="categoryName" id="categoryName" value="${product.categoryName}"></td>
             </tr>
             <tr>
                 <td>Manufacture: </td>
-                <td><input type="text" name="manufacture" id="manufacture"></td>
+                <td><input type="text" name="manufacture" id="manufacture" value="${product.manufacture}"></td>
             </tr>
             <tr>
-                <td>Proce: </td>
-                <td><input type="text" name="price" id="price"></td>
+                <td>Price: </td>
+                <td><input type="text" name="price" id="price" value="${product.price}"></td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Create new product"></td>
+                <td><input type="submit" value="Edit product"></td>
             </tr>
         </table>
     </fieldset>
