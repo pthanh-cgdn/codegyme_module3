@@ -91,13 +91,16 @@ public class MainController extends HttpServlet {
                 } else {
                     req.setAttribute("message", "Product is not edited");
                 }
-                req.getRequestDispatcher("product/edit.jsp").forward(req, resp);
+//                req.getRequestDispatcher("product/edit.jsp").forward(req, resp);
+                products = productService.getAll();
+                req.setAttribute("products", products);
+                req.getRequestDispatcher("product/display.jsp").forward(req, resp);
                 break;
             case "search":
                 String searchContent = req.getParameter("search");
                 products = productService.search(searchContent);
                 req.setAttribute("products", products);
-                req.getRequestDispatcher("product/search.jsp").forward(req, resp);
+                req.getRequestDispatcher("/product/search.jsp").forward(req, resp);
         }
     }
 }
