@@ -11,7 +11,7 @@ import java.io.IOException;
 
 @WebServlet(name="MainController",value="/discount")
 public class MainController extends HttpServlet {
-    Calculator calculator = new Calculator();
+    private Calculator calculator = new Calculator();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int price = 1000000000;

@@ -25,21 +25,27 @@ public class MainController extends HttpServlet {
             case "create":
                 showCreateForm(req, resp);
                 break;
-//            case "edit":
-//                showEditForm(request, response);
-//                break;
-//            case "delete":
-//                showDeleteForm(request, response);
-//                break;
-//            case "view":
-//                viewCustomer(request, response);
-//                break;
+            case "edit":
+                showEditForm(req, resp);
+                break;
             default:
                 listStudents(req, resp);
                 break;
         }
     }
-
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response){
+        int id = Integer.parseInt(request.getParameter("id"));
+        Student student = studentService.getStudentById(id);
+        request.setAttribute("student", student);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("students/edit.jsp");
+        try {
+            dispatcher.forward(request, response);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void showCreateForm(HttpServletRequest request, HttpServletResponse response) {
         RequestDispatcher dispatcher = request.getRequestDispatcher("students/create.jsp");
@@ -65,10 +71,8 @@ public class MainController extends HttpServlet {
         }
     }
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // Lấy Parameters (Dữ liệu request gửi đi) có name là "action".
         String action = req.getParameter("action");
 
-        // Nếu dữ liệu request gửi đi không có "action" thì sẽ trả về null.
         if (action == null) {
             action = "";
         }
@@ -76,15 +80,24 @@ public class MainController extends HttpServlet {
             case "create":
                 createStudent(req, resp);
                 break;
-//            case "edit":
-//                updateCustomer(request, response);
-//                break;
-//            case "delete":
-//                deleteCustomer(request, response);
-//                break;
+            case "edit":
+                updateStudent(req, resp);
+                break;
+            case "delete":
+                deleteStudent(req, resp);
+                break;
             default:
                 break;
 
+        }
+    }
+    public void deleteStudent(HttpServletRequest request, HttpServletResponse response) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        studentService.delete(id);
+        try {
+            response.sendRedirect("/students");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
     public void createStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -106,6 +119,23 @@ public class MainController extends HttpServlet {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+    }
+    public void updateStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        int id = Integer.parseInt(req.getParameter("id"));
+        String name = req.getParameter("name");
+        String address = req.getParameter("address");
+        String email = req.getParameter("email");
+        double mark = Double.parseDouble(req.getParameter("mark"));
+        Student student = new Student(id, name, address, email, mark);
+        studentService.edit(student);
+        RequestDispatcher dispatcher = req.getRequestDispatcher("students/edit.jsp");
+        req.setAttribute("message", "Student information was updated");
+        try {
+            dispatcher.forward(req, resp);
+        } catch (ServletException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

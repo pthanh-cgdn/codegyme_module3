@@ -14,4 +14,16 @@ public class StudentService {
     public void save(Student student) {
         studentRepository.add(student);
     }
+
+    public boolean delete(int id) {
+        return studentRepository.delete(id);
+    }
+
+    public void edit(Student student) {
+        studentRepository.edit(student);
+    }
+
+    public Student getStudentById(int id) {
+        return studentRepository.getStudentById(id);
+    }
 }

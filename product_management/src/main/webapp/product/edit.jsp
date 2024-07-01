@@ -17,42 +17,41 @@
     </style>
 </head>
 <body>
-<h1>Create new student</h1>
+<h1>Create new product</h1>
 <p>
     <c:if test='${requestScope["message"] != null}'>
         <span class="message">${requestScope["message"]}</span>
     </c:if>
 </p>
 <p>
-    <a href="/students">Back to student list</a>
+    <a href="/product">Back to student list</a>
 </p>
 <form method="post">
     <fieldset>
         <legend>Student information</legend>
         <table>
             <tr>
-                <td>ID: </td>
-                <td><input type="text" name="id" id="id"></td>
-            </tr>
-            <tr>
                 <td>Name: </td>
-                <td><input type="text" name="name" id="name"></td>
+                <td>
+                    <input type="text" name="name" id="name">
+                    <input type="hidden" name="id" value="${id}">
+                </td>
             </tr>
             <tr>
-                <td>Email: </td>
-                <td><input type="text" name="email" id="email"></td>
+                <td>Category: </td>
+                <td><input type="text" name="categoryName" id="categoryName"></td>
             </tr>
             <tr>
-                <td>Address: </td>
-                <td><input type="text" name="address" id="address"></td>
+                <td>Manufacture: </td>
+                <td><input type="text" name="manufacture" id="manufacture"></td>
             </tr>
             <tr>
-                <td>Mark: </td>
-                <td><input type="text" name="mark" id="mark"></td>
+                <td>Proce: </td>
+                <td><input type="text" name="price" id="price"></td>
             </tr>
             <tr>
                 <td></td>
-                <td><input type="submit" value="Create new student"></td>
+                <td><input type="submit" value="Create new product"></td>
             </tr>
         </table>
     </fieldset>

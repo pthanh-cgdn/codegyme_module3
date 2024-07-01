@@ -19,12 +19,40 @@ public class StudentRepository {
     }
 
     public List<Student> getAll() {
-//        List<Student> studentsCopy = new ArrayList<>();
-//        Collections.copy(studentsCopy, students);
         return students;
     }
 
     public void add(Student student) {
         students.add(student);
+    }
+
+    public boolean delete(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                students.remove(student);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void edit(Student student) {
+        for (Student s : students) {
+            if (s.getId() == student.getId()) {
+                s.setName(student.getName());
+                s.setAddress(student.getAddress());
+                s.setEmail(student.getEmail());
+                s.setMark(student.getMark());
+            }
+        }
+    }
+
+    public Student getStudentById(int id) {
+        for (Student student : students) {
+            if (student.getId() == id) {
+                return student;
+            }
+        }
+        return null;
     }
 }
