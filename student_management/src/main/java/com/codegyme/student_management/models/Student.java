@@ -15,6 +15,13 @@ public class Student {
         this.mark = mark;
     }
 
+    public Student(String name, String address, String email, double mark) {
+        this.name = name;
+        this.address = address;
+        this.email = email;
+        this.mark = mark;
+    }
+
     public int getId() {
         return id;
     }

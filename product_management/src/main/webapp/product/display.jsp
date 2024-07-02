@@ -17,7 +17,8 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
         <a class="navbar-brand" href="#">QuickBuy</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -29,8 +30,8 @@
                     <a class="nav-link" href="#">Contact</a>
                 </li>
             </ul>
-            <form class="d-flex" action = "/product?action=search" method="post">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name ="search">
+            <form class="d-flex" action="/product?action=search" method="post">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>
@@ -64,7 +65,9 @@
         <td>${product.manufacture}</td>
         <td>${product.price}</td>
         <td>
-            <a href="/product?action=edit&id=${product.id}"><button class="btn btn-warning">Edit</button></a>
+            <a href="/product?action=edit&id=${product.id}">
+                <button class="btn btn-warning">Edit</button>
+            </a>
             <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal${product.id}">Xóa
             </button>
             <div class="modal fade" id="deleteModal${product.id}" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -81,9 +84,9 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <form method="post" action="/product?action=delete">
+                            <form method="post" action="/product?action=delete&id=${product.id}">
                                 <button type="submit" class="btn btn-primary">Confirm</button>
-                                <input type ="hidden" name="id" value="${product.id}">
+                                    <%--                                <input type ="hidden" name="id" value="${product.id}">--%>
                             </form>
                         </div>
                     </div>

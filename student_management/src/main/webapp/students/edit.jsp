@@ -31,12 +31,12 @@
                 </td>
             </tr>
             <tr>
-                <td>Email: </td>
-                <td><input type="text" name="email" id="email" value="${student.email}"></td>
-            </tr>
-            <tr>
                 <td>Address: </td>
                 <td><input type="text" name="address" id="address" value="${student.address}"></td>
+            </tr>
+            <tr>
+                <td>Email: </td>
+                <td><input type="text" name="email" id="email" value="${student.email}"></td>
             </tr>
             <tr>
                 <td>Mark: </td>

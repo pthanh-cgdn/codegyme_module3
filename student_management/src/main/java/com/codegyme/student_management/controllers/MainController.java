@@ -101,13 +101,12 @@ public class MainController extends HttpServlet {
         }
     }
     public void createStudent(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int id = Integer.parseInt(req.getParameter("id"));
         String name = req.getParameter("name");
         String address = req.getParameter("address");
         String email = req.getParameter("email");
         double mark = Double.parseDouble(req.getParameter("mark"));
 
-        Student student = new Student(id, name, address, email, mark);
+        Student student = new Student(name, address, email, mark);
         studentService.save(student);
         RequestDispatcher dispatcher = req.getRequestDispatcher("students/create.jsp");
         req.setAttribute("message", "New student was created");

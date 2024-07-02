@@ -11,8 +11,8 @@
 <head>
     <title>Create new customer</title>
     <style>
-        .message{
-            color:green;
+        .message {
+            color: green;
         }
     </style>
 </head>
@@ -30,24 +30,24 @@
     <fieldset>
         <legend>Student information</legend>
         <table>
+            <%--            <tr>--%>
+            <%--                <td>ID: </td>--%>
+            <%--                <td><input type="text" name="id" id="id"></td>--%>
+            <%--            </tr>--%>
             <tr>
-                <td>ID: </td>
-                <td><input type="text" name="id" id="id"></td>
-            </tr>
-            <tr>
-                <td>Name: </td>
+                <td>Name:</td>
                 <td><input type="text" name="name" id="name"></td>
             </tr>
             <tr>
-                <td>Email: </td>
-                <td><input type="text" name="email" id="email"></td>
-            </tr>
-            <tr>
-                <td>Address: </td>
+                <td>Address:</td>
                 <td><input type="text" name="address" id="address"></td>
             </tr>
             <tr>
-                <td>Mark: </td>
+                <td>Email:</td>
+                <td><input type="text" name="email" id="email"></td>
+            </tr>
+            <tr>
+                <td>Mark:</td>
                 <td><input type="text" name="mark" id="mark"></td>
             </tr>
             <tr>

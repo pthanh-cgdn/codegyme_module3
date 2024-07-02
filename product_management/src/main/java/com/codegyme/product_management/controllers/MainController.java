@@ -72,10 +72,12 @@ public class MainController extends HttpServlet {
                 product = productService.findProductById(productId);
                 if (product == null) {
                     req.setAttribute("message", "Product is not found");
+                    products = productService.getAll();
+                    req.setAttribute("products", products);
                     req.getRequestDispatcher("product/display.jsp").forward(req, resp);
                 } else {
                     productService.remove(product);
-                    resp.sendRedirect("product/display.jsp");
+                    resp.sendRedirect("/product");
                 }
                 break;
             case "edit":
