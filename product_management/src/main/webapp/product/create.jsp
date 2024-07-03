@@ -28,7 +28,7 @@
 </p>
 <form method="post">
     <fieldset>
-        <legend>Student information</legend>
+        <legend>Product information</legend>
         <table>
 
             <tr>

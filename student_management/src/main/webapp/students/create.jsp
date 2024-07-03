@@ -51,6 +51,15 @@
                 <td><input type="text" name="mark" id="mark"></td>
             </tr>
             <tr>
+                <label for="classId"><td>Class:</td></label>
+                <td><select name="classId" id="classId">
+                    <c:forEach var="classes" items="${classes}">
+                        <option value=${classes.id}>${classes.name}</option>
+                    </c:forEach>
+<%--                    <option value="">No Class</option>--%>
+                </select></td>
+            </tr>
+            <tr>
                 <td></td>
                 <td><input type="submit" value="Create new student"></td>
             </tr>

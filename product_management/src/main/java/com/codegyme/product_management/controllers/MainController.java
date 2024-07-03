@@ -32,6 +32,12 @@ public class MainController extends HttpServlet {
                 req.setAttribute("product", productToEdit);
                 req.getRequestDispatcher("product/edit.jsp").forward(req, resp);
                 break;
+            case "sort":
+                String sortBy = req.getParameter("sortBy");
+                products = productService.sort(sortBy);
+                req.setAttribute("products", products);
+                req.getRequestDispatcher("product/display.jsp").forward(req, resp);
+                break;
             default:
                 products = productService.getAll();
                 req.setAttribute("products", products);

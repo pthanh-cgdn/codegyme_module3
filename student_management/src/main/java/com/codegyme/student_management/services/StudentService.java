@@ -1,5 +1,6 @@
 package com.codegyme.student_management.services;
 
+import com.codegyme.student_management.dto.StudentDTO;
 import com.codegyme.student_management.models.Student;
 import com.codegyme.student_management.repositories.StudentRepository;
 
@@ -7,7 +8,8 @@ import java.util.List;
 
 public class StudentService {
     StudentRepository studentRepository = new StudentRepository();
-    public List<Student> getAll() {
+
+    public List<StudentDTO> getAll() {
         return studentRepository.getAll();
     }
 

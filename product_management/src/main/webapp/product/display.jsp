@@ -48,11 +48,11 @@
 <table class="table table-hover">
     <thead>
     <tr>
-        <th>Product ID</th>
-        <th>Name</th>
-        <th>Category</th>
-        <th>Manufacture</th>
-        <th>Price</th>
+        <th>Product ID <a href="product?action=sort&sortBy=id"><button>sort</button></a></th>
+        <th>Name <a href="product?action=sort&sortBy=name"><button>sort</button></a></th>
+        <th>Category <a href="product?action=sort&sortBy=categoryName"><button>sort</button></a></th>
+        <th>Manufacture <a href="product?action=sort&sortBy=manufacture"><button>sort</button></a></th>
+        <th>Price <a href="product?action=sort&sortBy=price"><button>sort</button></a></th>
         <th>Action</th>
     </tr>
     </thead>
@@ -86,7 +86,6 @@
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             <form method="post" action="/product?action=delete&id=${product.id}">
                                 <button type="submit" class="btn btn-primary">Confirm</button>
-                                    <%--                                <input type ="hidden" name="id" value="${product.id}">--%>
                             </form>
                         </div>
                     </div>

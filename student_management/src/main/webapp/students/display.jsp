@@ -47,6 +47,7 @@
         <th>Address</th>
         <th>Email</th>
         <th>Mark</th>
+        <th>Class Name</th>
         <th>Student type</th>
         <th>Action</th>
     </tr>
@@ -59,6 +60,7 @@
         <td>${student.address}</td>
         <td>${student.email}</td>
         <td>${student.mark}</td>
+        <td>${student.className}</td>
         <td>
             <c:choose>
                 <c:when test="${student.mark >=8}">Hoc sinh gioi</c:when>

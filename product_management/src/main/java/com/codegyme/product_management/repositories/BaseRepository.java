@@ -20,6 +20,7 @@ public class BaseRepository {
         }
     }
     private BaseRepository() {}
+
     public static Connection getConnection() {
         return connection;
     }

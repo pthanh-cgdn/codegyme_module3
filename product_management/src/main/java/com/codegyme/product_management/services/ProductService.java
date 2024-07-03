@@ -30,4 +30,8 @@ public class ProductService {
     public List<Product> search(String searchContent) {
         return productRepository.search(searchContent);
     }
+
+    public List<Product> sort(String sortBy) {
+        return productRepository.sort(sortBy);
+    }
 }

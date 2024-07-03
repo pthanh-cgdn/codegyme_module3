@@ -9,7 +9,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
-    <title>Create new customer</title>
+    <title>Create new product</title>
     <style>
         .message{
             color:green;
@@ -24,11 +24,11 @@
     </c:if>
 </p>
 <p>
-    <a href="/product">Back to student list</a>
+    <a href="/product">Back to product list</a>
 </p>
 <form method="post">
     <fieldset>
-        <legend>Student information</legend>
+        <legend>Product information</legend>
         <table>
             <tr>
                 <td>Name: </td>

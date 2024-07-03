@@ -1,35 +1,35 @@
-package com.codegyme.student_management.models;
+package com.codegyme.student_management.dto;
 
-public class Student {
+public class StudentDTO {
     private int id;
     private String name;
     private String address;
     private String email;
     private double mark;
-    private int classId;
+    private String className;
 
-    public Student(int id, String name, String address, String email, double mark, int classId) {
+    public StudentDTO(int id, String name, String address, String email, double mark, String className) {
         this.id = id;
         this.name = name;
         this.address = address;
         this.email = email;
         this.mark = mark;
-        this.classId = classId;
+        this.className = className;
     }
 
-    public Student(String name, String address, String email, double mark) {
+    public StudentDTO(String name, String address, String email, double mark) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.mark = mark;
     }
 
-    public Student(String name, String address, String email, double mark, int classId) {
+    public StudentDTO(String name, String address, String email, double mark, String classId) {
         this.name = name;
         this.address = address;
         this.email = email;
         this.mark = mark;
-        this.classId = classId;
+        this.className = classId;
     }
 
     public int getId() {
@@ -72,11 +72,11 @@ public class Student {
         this.mark = mark;
     }
 
-    public int getClassId() {
-        return classId;
+    public String getClassName() {
+        return className;
     }
 
-    public void setClassId(int classId) {
-        this.classId = classId;
+    public void setClassName(String className) {
+        this.className = className;
     }
 }

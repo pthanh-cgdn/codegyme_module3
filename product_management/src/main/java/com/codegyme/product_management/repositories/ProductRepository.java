@@ -2,63 +2,135 @@ package com.codegyme.product_management.repositories;
 
 import com.codegyme.product_management.models.Product;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ProductRepository {
-    private static List<Product> products = new ArrayList<>();
-    static {
-        products.add(new Product(1,"Iphone 16 Pro","Mobile","Apple",999));
-        products.add(new Product(2,"Samsung Galaxy S10","Mobile","Samsung",899));
-        products.add(new Product(3,"Bphone B2","Mobile","BKAV",599));
-    }
+
     public boolean add(Product product) {
-        if (!products.isEmpty()){
-            product.setId(products.get(products.size() - 1).getId()+1);
-        } else {
-            product.setId(1);
+        boolean isAdded;
+        try {
+            Connection connection = BaseRepository.getConnection();
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connection.prepareStatement("INSERT INTO product_management.products (name, categoryName, manufacture, price) values (?,?,?,?)");
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setString(2, product.getCategoryName());
+            preparedStatement.setString(3, product.getManufacture());
+            preparedStatement.setInt(4, product.getPrice());
+            isAdded = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        products.add(product);
-        return true;
+        return isAdded;
     }
 
     public Product findProductById(int productId) {
-        for (Product product : products) {
-            if (product.getId() == productId) {
-                return product;
+        try {
+            Connection connection = BaseRepository.getConnection();
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connection.prepareStatement("SELECT * FROM product_management.products WHERE id = ?");
+            preparedStatement.setInt(1, productId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String categoryName = resultSet.getString("categoryName");
+                String manufacture = resultSet.getString("manufacture");
+                int price = resultSet.getInt("price");
+                return new Product(id, name, categoryName, manufacture, price);
             }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
         return null;
     }
 
     public void remove(Product product) {
-        products.remove(product);
+        try {
+            Connection connection = BaseRepository.getConnection();
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connection.prepareStatement("DELETE FROM product_management.products WHERE id = ?");
+            preparedStatement.setInt(1, product.getId());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     public boolean editProduct(int id, Product product) {
-        for (Product product1 : products) {
-            if (product1.getId() == id) {
-                product1.setName(product.getName());
-                product1.setPrice(product.getPrice());
-                product1.setCategoryName(product.getCategoryName());
-                product1.setManufacture(product.getManufacture());
-                return true;
-            }
+        boolean isEdited;
+        try {
+            Connection connection = BaseRepository.getConnection();
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connection.prepareStatement("UPDATE product_management.products SET name=?, categoryName=?, manufacture=?, price=? WHERE id = ?");
+            preparedStatement.setString(1, product.getName());
+            preparedStatement.setString(2, product.getCategoryName());
+            preparedStatement.setString(3, product.getManufacture());
+            preparedStatement.setInt(4, product.getPrice());
+            preparedStatement.setInt(5, id);
+            isEdited = preparedStatement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        return false;
+        return isEdited;
     }
 
     public List<Product> getAll() {
-        return this.products;
+        List<Product> products = new ArrayList<>();
+        try {
+            Connection connection = BaseRepository.getConnection();
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connection.prepareStatement("SELECT * FROM product_management.products");
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String categoryName = resultSet.getString("categoryName");
+                String manufacture = resultSet.getString("manufacture");
+                int price = resultSet.getInt("price");
+                products.add(new Product(id, name, categoryName, manufacture, price));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return products;
     }
 
     public List<Product> search(String searchContent) {
         List<Product> searchedProduct = new ArrayList<>();
+        List<Product> products = getAll();
         for (Product product : products) {
             if (product.getName().toLowerCase().contains(searchContent.toLowerCase())) {
                 searchedProduct.add(product);
             }
         }
         return searchedProduct;
+    }
+
+    public List<Product> sort(String sortBy) {
+        List<Product> products = new ArrayList<>();
+        try {
+            Connection connection = BaseRepository.getConnection();
+            PreparedStatement preparedStatement = null;
+            preparedStatement = connection.prepareStatement("SELECT * FROM product_management.products ORDER BY "+sortBy);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                int id = resultSet.getInt("id");
+                String name = resultSet.getString("name");
+                String categoryName = resultSet.getString("categoryName");
+                String manufacture = resultSet.getString("manufacture");
+                int price = resultSet.getInt("price");
+                products.add(new Product(id, name, categoryName, manufacture, price));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        return products;
     }
 }
