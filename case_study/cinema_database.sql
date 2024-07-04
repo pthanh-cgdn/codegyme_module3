@@ -6,6 +6,7 @@ title VARCHAR(255) NOT NULL,
 director VARCHAR(255),
 release_year INT,
 duration INT,
+image VARCHAR(255),
 description TEXT
 );
 CREATE TABLE rooms (
